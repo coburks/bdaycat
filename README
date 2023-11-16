@@ -1,0 +1,48 @@
+take user input as either add birthday or check saved birthdays
+
+add birthday
+
+bdaycat 
+
+a command line tool to check saved birthdays
+
+-check = this flag is used to check a date and return names of saved birthdays
+	or to check a name and return dates
+
+-name = this flag is used to assign a name to a date before it is saved and when it is called
+
+-add = this flag utilizes the "save a name to a date" functionality
+
+-y = year, must be 4 digits
+
+-m = month, can be numerical or word or abbreviation
+
+-d = day, must be numerical in range of 1 - 31
+
+
+
+-------------------------example command:-----------------
+bdaycat -add -name "test test" -d 01 -m 01 -y 2024
+
+bdaycat -check -name "test test"
+	January 1st, 2023
+	this is today.
+
+----------------------------------------------------------
+
+
+
+The bdaycat command can be set to a cron job to run daily at midnight and deliver an alert to the user's mobile through the usage of a web interface. with unix,
+we can query the system time and date then process that text through a pipe into the bdaycat command 
+
+
+we would have to save this data to a text file to query or some kind of database when we read from with check or write to with add. a sql database would work by utilizing certain queries tied to the functions. like the add flag can call
+
+
+INSERT INTO TABLE BIRTHDAYS WHERE COLUMN NAME = '%(user defined name here)%' and COLUMN DAY = '%%' and MONTH = '%%';  etc...
+
+
+check could use
+
+
+SELECT * FROM BIRTHDAYS WHERE NAME LIKE '%(user input here)%'; 
